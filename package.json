@@ -1,0 +1,11 @@
+{
+  "name": "giphy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    
+  },
+  "dependencies": {
+    "query-string": "^5.0.1"
+  }
+}
