@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build:styles": "node-sass --output src/styles/giphy.scss public/assets/styles/output.css",
+    "build:styles": "node-sass --source-map true --output-style compressed src/styles/giphy.scss public/assets/styles/output.css",
     "watch:styles": "node-sass --watch src/styles/giphy.scss public/assets/styles/output.css"
   },
   "dependencies": {
     "node-sass": "^4.7.2",
-    "query-string": "^5.0.1"
+    "query-string": "^5.0.1",
+    "sanitize.css": "^5.0.0"
   }
 }
