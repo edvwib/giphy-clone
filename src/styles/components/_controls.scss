@@ -1,0 +1,30 @@
+.controls{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $controls-height;
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-flow: column nowrap;
+
+  .play-pause-global{
+    height: 100%;
+    display: flex;
+    text-align: center;
+    line-height: $controls-height;
+
+    .play-global, .pause-global{
+      height: inherit;
+      width: $controls-height;
+      cursor: pointer;
+    }
+    .play-global{
+      background-color: $color-green
+    }
+    .pause-global{
+      background-color: $color-red;
+    }
+  }
+}

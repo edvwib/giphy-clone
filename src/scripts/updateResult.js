@@ -18,15 +18,22 @@ export default function (query){
           return data.json();
         })
         .then(result => {
-          let data = result.data;
-          console.log(data[0]);
-          data.forEach(gif => {
-            let imgurl = gif['images']['original']['url'];
-            let img = document.createElement('img');
-            img.src = imgurl;
-            gallery.appendChild(img);
-          });
+          addGifs(result.data, gallery);
         });
     }, 1000);
   }
+}
+
+function addGifs(data, gallery){
+  data.forEach(gif => {
+    let vidurl = gif['images']['original_mp4']['mp4'];
+    let video = document.createElement('video');
+    video.src = vidurl;
+    video.autoplay = true;
+    video.loop = true;
+    gallery.appendChild(video);
+    let progress = document.createElement('span');
+    progress.classList.add('gif-progress');
+    gallery.appendChild(progress);
+  });
 }

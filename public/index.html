@@ -10,21 +10,31 @@
     <link rel="stylesheet" href="assets/styles/output.css">
   </head>
   <body>
+
+    <div class="controls">
+      <div class="play-pause-global">
+        <div class="play-global" title="Automatically play all gifs">▶</div>
+        <div class="pause-global" title="Play gifs when hovering">&#10074;&#10074;</div>
+      </div>
+    </div>
+
     <header class="header">
-      <img class="header__logo" src="assets/images/logo.gif" alt="The Giphy logo">
+      <a href="/">
+        <img class="header-logo" src="assets/images/logo.gif" alt="The Giphy logo">
+      </a>
     </header><!-- /header -->
 
     <main class="giphy">
       <form class="search" id="search">
-        <input type="text" class="search__input" name="search" placeholder="Search all the GIFs...">
-        <button typ!e="submit" class="search__button"></button>
+        <input type="text" class="search-input" name="search" placeholder="Search all the GIFs...">
+        <button type="submit" class="search-button"></button>
       </form><!-- /search -->
       <div class="gallery"></div><!-- /gallery -->
       <p class="not-found"></p><!-- /not-found -->
     </main><!-- /giphy -->
 
     <footer class="footer">
-      <p class="footer__copyright"><small>&copy; <a href="https://yrgo.github.io" title="Visit Yrgo's GitHub page">Yrgo</a>, högre yrkesutbildning Göteborg.</small></p>
+      <p class="footer-copyright"><small>&copy; <a href="https://yrgo.github.io" title="Visit Yrgo's GitHub page">Yrgo</a>, högre yrkesutbildning Göteborg.</small></p>
     </footer><!-- /footer -->
 
     <script src="assets/scripts/giphy.js" charset="utf-8"></script>
