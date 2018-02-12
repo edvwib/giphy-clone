@@ -10,14 +10,14 @@
     width: 50%;
     margin: auto;
     margin-bottom: 20px;
-    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.35);
+    box-shadow: 0px 0px 8px rgba(255, 255, 255, .25);
   }
   .progressbar-container{
     position: absolute;
     height: 5px;
 
     .progressbar{
-      background-color: rgb(55, 55, 255);
+      background-color: $color-blue;
       height: inherit;
       transition: width 1s linear;
     }

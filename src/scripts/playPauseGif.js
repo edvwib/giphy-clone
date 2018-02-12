@@ -12,21 +12,6 @@ export default function (play) {
     window.localStorage.setItem('global-play', 'false');
     setControllState(false);
   });
-
-  setTimeout(() => {
-    if (window.localStorage.getItem('global-play') === 'false') {
-      document.querySelectorAll('video').forEach(mp4 => {
-        mp4.addEventListener('mouseover', () => {
-          mp4.play();
-          displayProgressBar(mp4, true);
-        });
-        mp4.addEventListener('mouseleave', () => {
-          mp4.pause();
-          displayProgressBar(mp4, false);
-        });
-      });
-    }
-  }, 1200);
 }
 
 function setControllState (play) {
@@ -49,8 +34,26 @@ function setVideoState (play) {
   } else {
     mp4List.forEach(mp4 => {
       mp4.pause();
+      addVideoEventListener(mp4);
     });
   }
+}
+
+function addVideoEventListener(mp4){
+  setTimeout(() => {
+    if (window.localStorage.getItem('global-play') === 'false') {
+      document.querySelectorAll('video').forEach(mp4 => {
+        mp4.addEventListener('mouseover', () => {
+          mp4.play();
+          displayProgressBar(mp4, true);
+        });
+        mp4.addEventListener('mouseleave', () => {
+          mp4.pause();
+          displayProgressBar(mp4, false);
+        });
+      });
+    }
+  }, 1200);
 }
 
 function displayProgressBar (mp4, hover) {
@@ -66,15 +69,14 @@ function displayProgressBar (mp4, hover) {
     barContainer.style.left = rect.x + 'px';
     barContainer.style.top = rect.y + rect.height + 'px';
 
-
     barContainer.appendChild(bar);
-    console.log(rect);
-    document.body.querySelector('.gallery').appendChild(barContainer);
+    document.querySelector('.gallery').appendChild(barContainer);
     setInterval(function () {
-      bar.style.width = (mp4.currentTime/mp4.duration)*100 + '%';
+      bar.style.width = (mp4.currentTime / mp4.duration) * 100 + '%';
     }, 1000);
   } else {
-    document.querySelector('.progressbar-container').remove();
+    if (document.querySelector('.progressbar-container') !== null) {
+      document.querySelector('.progressbar-container').remove();
+    }
   }
-
 }

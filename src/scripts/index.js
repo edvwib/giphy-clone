@@ -15,6 +15,8 @@ setTimeout(() => {
 // Search
 const search = document.querySelector('.search-input');
 search.addEventListener('keyup', (e) => updateResult(e.target.value));
+let query = window.location.search.split('?search=')[1];
 if (document.URL.indexOf('?search=') >= 0) { // display gifs if url for query is set
-  updateResult(window.location.search.split('?search=')[1]);
+  updateResult(query);
+  search.value = query;
 }

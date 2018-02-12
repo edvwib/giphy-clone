@@ -20,6 +20,7 @@
       width: $controls-height;
       cursor: pointer;
       background-color: rgb(56, 56, 56);
+      transition: all .75s;
     }
     .play-global.active{
       background-color: $color-green;

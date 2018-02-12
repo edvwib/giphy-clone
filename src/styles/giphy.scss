@@ -15,52 +15,6 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  .header{
-    width: 70%;
-    max-width: 700px;
-    margin: 0 auto;
-    margin-top: $controls-height;
-    margin-bottom: 20px;
-
-    .header-logo{
-      width: 100%;
-    }
-  }
-
-  main.giphy{
-    form{
-      display: flex;
-      flex-flow: row nowrap;
-      width: 75%;
-      max-width: 700px;
-      height: 60px;
-      margin: auto;
-    }
-    input{
-      flex-grow: 1;
-      border-right: none;
-      border-color: hotpink;
-      padding-left: 15px;
-    }
-    button{
-      width: 60px;
-      border: none;
-      background-image: url('../../assets/images/search.gif');
-      background-size: 60px;
-    }
-  }
-
-  .footer{
-    p{
-      text-align: center;
-    }
-    a{
-      color: hotpink;
-
-      &:hover{
-        color: purple;
-      }
-    }
-  }
+  background-color: $color-background;
+  color: white;
 }
