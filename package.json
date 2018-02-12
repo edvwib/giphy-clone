@@ -10,7 +10,6 @@
     "watch:styles": "node-sass --watch src/styles/giphy.scss public/assets/styles/output.css",
     "build:scripts": "rollup --config --environment NODE_ENV:production",
     "watch:scripts": "rollup --config --watch",
-
     "test": "semistandard --verbose | snazzy"
   },
   "semistandard": {

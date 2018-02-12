@@ -1,3 +1,5 @@
-'use strict';
+import updateResult from './updateResult.js';
 
-console.log('asd');
+const search = document.querySelector('.search__input');
+
+search.addEventListener('keyup', (e) => updateResult(e.target.value));
