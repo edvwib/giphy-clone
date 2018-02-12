@@ -19,11 +19,12 @@
       height: inherit;
       width: $controls-height;
       cursor: pointer;
+      background-color: rgb(56, 56, 56);
     }
-    .play-global{
-      background-color: $color-green
+    .play-global.active{
+      background-color: $color-green;
     }
-    .pause-global{
+    .pause-global.active{
       background-color: $color-red;
     }
   }

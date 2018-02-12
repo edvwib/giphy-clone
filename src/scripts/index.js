@@ -2,8 +2,16 @@ import playPauseGif from './playPauseGif.js';
 import updateResult from './updateResult.js';
 
 //Controls
-const playPauseGifs = document.querySelector('.play-pause-global');
-playPauseGifs.addEventListener('click', (e) => playPauseGifs());
+setTimeout(() => {
+  if (localStorage.getItem('global-play') === 'false') {
+    localStorage.setItem('global-play', 'false');
+    playPauseGif(false);
+  }
+  else {
+    localStorage.setItem('global-play', 'true');
+    playPauseGif(true);
+  }
+}, 1100);
 
 //Search
 const search = document.querySelector('.search-input');
@@ -13,9 +21,8 @@ if (document.URL.indexOf("?search=") >= 0){ //display gifs if url for query is s
 }
 
 
-setInterval(function () {
-  console.log(document.querySelector('video').currentTime);
-  console.log(document.querySelector('video').duration);
-  
+// setInterval(function () {
+//   console.log(document.querySelector('video').currentTime);
+//   console.log(document.querySelector('video').duration);
+// }, 1500);
 
-}, 1500);
