@@ -1,5 +1,16 @@
 @charset 'UTF-8';
 
 .gallery{
-  
+  width: 70%;
+  margin: auto;
+  margin-top: 40px;
+
+  display: flex;
+  flex-flow: column nowrap;
+
+  img{
+    margin: auto;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.35);
+  }
 }
