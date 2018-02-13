@@ -7,19 +7,20 @@
   flex-flow: column nowrap;
 
   video{
-    width: 50%;
+    width: 100%;
+    max-width: 800px;
     margin: auto;
     margin-bottom: 20px;
     box-shadow: 0px 0px 8px rgba(255, 255, 255, .25);
   }
   .progressbar-container{
-    position: absolute;
+    position: fixed;
     height: 5px;
 
     .progressbar{
       background-color: $color-blue;
       height: inherit;
-      transition: width 1s linear;
+      transition: width 100/3s linear;
     }
   }
 

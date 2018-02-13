@@ -39,18 +39,17 @@ function setVideoState (play) {
   }
 }
 
-function addVideoEventListener(mp4){
+function addVideoEventListener (mp4) {
   setTimeout(() => {
     if (window.localStorage.getItem('global-play') === 'false') {
-      document.querySelectorAll('video').forEach(mp4 => {
-        mp4.addEventListener('mouseover', () => {
-          mp4.play();
-          displayProgressBar(mp4, true);
-        });
-        mp4.addEventListener('mouseleave', () => {
-          mp4.pause();
-          displayProgressBar(mp4, false);
-        });
+      mp4.addEventListener('mouseover', () => {
+        displayProgressBar(mp4, true);
+        mp4.play();
+      });
+      mp4.addEventListener('mouseleave', () => {
+        displayProgressBar(mp4, false);
+        mp4.pause();
+        mp4.currentTime = 0;
       });
     }
   }, 1200);
@@ -71,9 +70,12 @@ function displayProgressBar (mp4, hover) {
 
     barContainer.appendChild(bar);
     document.querySelector('.gallery').appendChild(barContainer);
+
+    bar.style.width = (mp4.currentTime / mp4.duration) * 100 + '%';
     setInterval(function () {
-      bar.style.width = (mp4.currentTime / mp4.duration) * 100 + '%';
-    }, 1000);
+      let percent = (mp4.currentTime / mp4.duration) * 100 + '%';
+      bar.style.width = percent;
+    }, 100/3);
   } else {
     if (document.querySelector('.progressbar-container') !== null) {
       document.querySelector('.progressbar-container').remove();
