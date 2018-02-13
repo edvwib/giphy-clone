@@ -2,7 +2,7 @@ import gifController from './gifController.js';
 import searchController from './searchController.js';
 
 // Controls
-let autoplay = window.localStorage.getItem('auto-play');
+let autoplay = window.localStorage.getItem('autoplay');
 if (autoplay === 'true' || autoplay === null) {
   window.localStorage.setItem('autoplay', 'true');
   autoplay = 'true';
