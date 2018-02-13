@@ -3,7 +3,7 @@ import updateResult from './updateResult.js';
 
 // Controls
 setTimeout(() => {
-  if (window.localStorage.getItem('global-play') == 'false') {
+  if (window.localStorage.getItem('global-play') === 'false') {
     window.localStorage.setItem('global-play', 'false');
     playPauseGif(false);
   } else {

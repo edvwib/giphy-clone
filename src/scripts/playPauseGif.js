@@ -75,7 +75,7 @@ function displayProgressBar (mp4, hover) {
     setInterval(function () {
       let percent = (mp4.currentTime / mp4.duration) * 100 + '%';
       bar.style.width = percent;
-    }, 100/3);
+    }, 100 / 3);
   } else {
     if (document.querySelector('.progressbar-container') !== null) {
       document.querySelector('.progressbar-container').remove();
