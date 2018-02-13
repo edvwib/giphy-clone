@@ -1,22 +1,21 @@
-import playPauseGif from './playPauseGif.js';
-import updateResult from './updateResult.js';
+import gifController from './gifController.js';
+import searchController from './searchController.js';
 
 // Controls
-setTimeout(() => {
-  if (window.localStorage.getItem('global-play') === 'false') {
-    window.localStorage.setItem('global-play', 'false');
-    playPauseGif(false);
-  } else {
-    window.localStorage.setItem('global-play', 'true');
-    playPauseGif(true);
-  }
-}, 1100);
+let autoplay = window.localStorage.getItem('auto-play');
+if (autoplay === 'true' || autoplay === null) {
+  window.localStorage.setItem('autoplay', 'true');
+  autoplay = 'true';
+} else {
+  window.localStorage.setItem('autoplay', 'false');
+}
+gifController(autoplay);
 
 // Search
 const search = document.querySelector('.search-input');
-search.addEventListener('keyup', (e) => updateResult(e.target.value));
+search.addEventListener('keyup', (e) => searchController(search.value));
 let query = window.location.search.split('?search=')[1];
 if (document.URL.indexOf('?search=') >= 0) { // display gifs if url for query is set
-  updateResult(query);
+  searchController(query);
   search.value = query;
 }

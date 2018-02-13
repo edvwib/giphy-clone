@@ -22,11 +22,17 @@
       background-color: rgb(56, 56, 56);
       transition: all .75s;
     }
-    .play-global.active{
+    .play-global{
       background-color: $color-green;
     }
-    .pause-global.active{
-      background-color: $color-red;
+
+    &.paused{
+      .pause-global{
+        background-color: $color-red;
+      }
+      .play-global{
+        background-color: rgb(56, 56, 56);
+      }
     }
   }
 }

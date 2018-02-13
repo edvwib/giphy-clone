@@ -24,6 +24,7 @@
     "browser-sync": "^2.23.6",
     "node-sass": "^4.7.2",
     "npm-run-all": "^4.1.2",
+    "punycode": "^2.1.0",
     "query-string": "^5.0.1",
     "rollup": "^0.55.3",
     "rollup-plugin-babel": "^3.0.3",

@@ -10,14 +10,14 @@ main.giphy{
   input{
     flex-grow: 1;
     border: 2px solid $color-blue;
-    border-right: none;
+    // border-right: none;
     padding-left: 15px;
   }
   button{
     width: 60px;
     border: 2px solid $color-blue;
     border-left: none;
-    background-image: url('../../assets/images/search.svg');
+    background-image: url('../../assets/images/search.gif');
     background-size: 60px;
     cursor: pointer;
   }

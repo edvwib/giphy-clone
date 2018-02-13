@@ -1,33 +1,31 @@
-const playGlobal = document.querySelector('.play-global');
-const pauseGlobal = document.querySelector('.pause-global');
+const autoplayBtn = document.querySelector('.play-pause-global');
 
-export default function (play) {
-  setControllState(play);
+export default function (autoplay) {
+  setAutoplayState(autoplay);
 
-  playGlobal.addEventListener('click', () => {
-    window.localStorage.setItem('global-play', 'true');
-    setControllState(true);
-  });
-  pauseGlobal.addEventListener('click', () => {
-    window.localStorage.setItem('global-play', 'false');
-    setControllState(false);
+  autoplayBtn.addEventListener('click', () => {
+    if (window.localStorage.getItem('autoplay') === 'true') {
+      window.localStorage.setItem('autoplay', 'false');
+    } else {
+      window.localStorage.setItem('autoplay', 'true');
+    }
+    setAutoplayState(window.localStorage.getItem('autoplay'));
   });
 }
 
-function setControllState (play) {
-  if (play) {
-    playGlobal.classList.add('active');
-    pauseGlobal.classList.remove('active');
+function setAutoplayState (autoplay) {
+  if (autoplay === 'false') {
+    autoplayBtn.classList.add('paused');
   } else {
-    pauseGlobal.classList.add('active');
-    playGlobal.classList.remove('active');
+    autoplayBtn.classList.remove('paused');
   }
-  setVideoState(play);
+  setVideoState(autoplay);
 }
 
-function setVideoState (play) {
+function setVideoState (autoplay) {
   let mp4List = document.querySelectorAll('video');
-  if (play) {
+
+  if (autoplay === 'true') {
     mp4List.forEach(mp4 => {
       mp4.play();
     });
