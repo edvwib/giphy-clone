@@ -9,6 +9,6 @@ const searchForm = document.querySelector('.search-input');
 searchForm.addEventListener('keyup', (e) => search(searchForm.value));
 let query = window.location.search.split('?search=')[1];
 if (document.URL.indexOf('?search=') >= 0) { // display gifs if url for query is set
-  searchController(query);
+  search(query);
   searchForm.value = query;
 }

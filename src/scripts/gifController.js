@@ -2,11 +2,9 @@ const autoplayBtn = document.querySelector('.play-pause-global');
 
 function setupControls () {
   setAutoplaySetting(getAutoplaySetting());
-  setAutoplayBtn(getAutoplaySetting());
 
   autoplayBtn.addEventListener('click', () => {
     setAutoplaySetting(!getAutoplaySetting());
-    setAutoplayBtn(getAutoplaySetting());
   });
 }
 
@@ -19,6 +17,7 @@ function getAutoplaySetting () {
 }
 
 function setAutoplaySetting (autoplay) {
+  setAutoplayBtn(autoplay);
   if (autoplay) {
     window.localStorage.setItem('autoplay', 'true');
     return;
@@ -45,7 +44,7 @@ function setGifState (autoplay) {
   } else {
     mp4List.forEach(mp4 => {
       mp4.pause();
-      addGifEventListener(mp4);
+      //addGifEventListener(mp4);
     });
   }
 }
@@ -65,7 +64,7 @@ function addGifEventListener (mp4) {
     }
   }, 1200);
 }
-
+/*
 function displayProgressBar (mp4, hover) {
   if (hover) {
     let rect = mp4.getBoundingClientRect();
@@ -92,6 +91,6 @@ function displayProgressBar (mp4, hover) {
       document.querySelector('.progressbar-container').remove();
     }
   }
-}
+}*/
 
-export {setupControls, getAutoplaySetting, setAutoplaySetting, setAutoplayBtn, setGifState, addGifEventListener, displayProgressBar};
+export {setupControls, getAutoplaySetting, setAutoplaySetting, setAutoplayBtn, setGifState, addGifEventListener};

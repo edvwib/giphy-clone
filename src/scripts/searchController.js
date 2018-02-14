@@ -28,6 +28,7 @@ function search (query) {
 
 function addGifs (data, gallery) {
   data.forEach(gif => {
+    // Gif/Video
     let vidurl = gif['images']['original_mp4']['mp4'];
     let video = document.createElement('video');
     video.src = vidurl;
@@ -38,6 +39,29 @@ function addGifs (data, gallery) {
     }
     video.loop = true;
     gallery.appendChild(video);
+
+    // Progressbar
+    let gifPos = video.getBoundingClientRect();
+    let progressbarContainer = document.createElement('div');
+    progressbarContainer.classList.add('progressbar-container', 'hidden');
+    let progressbar = document.createElement('div');
+    progressbar.classList.add('progressbar');
+
+    progressbarContainer.appendChild(progressbar);
+    gallery.appendChild(progressbarContainer);
+
+    video.addEventListener('mouseover', (e) => {
+      e.target.nextSibling.classList.remove('hidden');
+      e.target.play();
+      setInterval(function () {
+        e.target.nextSibling.firstChild.style.width = (e.target.currentTime / e.target.duration) * 100 + '%';
+      }, 100 / 3);
+
+    });
+    video.addEventListener('mouseleave', (e) => {
+      e.target.nextSibling.classList.add('hidden');
+      e.target.pause();
+    });
   });
 }
 
