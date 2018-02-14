@@ -1,43 +1,56 @@
 const autoplayBtn = document.querySelector('.play-pause-global');
 
-export default function (autoplay) {
-  setAutoplayState(autoplay);
+function setupControls () {
+  setAutoplaySetting(getAutoplaySetting());
+  setAutoplayBtn(getAutoplaySetting());
 
   autoplayBtn.addEventListener('click', () => {
-    if (window.localStorage.getItem('autoplay') === 'true') {
-      window.localStorage.setItem('autoplay', 'false');
-    } else {
-      window.localStorage.setItem('autoplay', 'true');
-    }
-    setAutoplayState(window.localStorage.getItem('autoplay'));
+    setAutoplaySetting(!getAutoplaySetting());
+    setAutoplayBtn(getAutoplaySetting());
   });
 }
 
-function setAutoplayState (autoplay) {
-  if (autoplay === 'false') {
-    autoplayBtn.classList.add('paused');
-  } else {
-    autoplayBtn.classList.remove('paused');
+function getAutoplaySetting () {
+  let autoplay = window.localStorage.getItem('autoplay');
+  if (autoplay === 'true' || autoplay === null) {
+    return true;
   }
-  setVideoState(autoplay);
+  return false;
 }
 
-function setVideoState (autoplay) {
+function setAutoplaySetting (autoplay) {
+  if (autoplay) {
+    window.localStorage.setItem('autoplay', 'true');
+    return;
+  }
+  window.localStorage.setItem('autoplay', 'false');
+}
+
+function setAutoplayBtn (autoplay) {
+  if (autoplay) {
+    autoplayBtn.classList.remove('paused');
+  } else {
+    autoplayBtn.classList.add('paused');
+  }
+  setGifState(autoplay);
+}
+
+function setGifState (autoplay) {
   let mp4List = document.querySelectorAll('video');
 
-  if (autoplay === 'true') {
+  if (autoplay) {
     mp4List.forEach(mp4 => {
       mp4.play();
     });
   } else {
     mp4List.forEach(mp4 => {
       mp4.pause();
-      addVideoEventListener(mp4);
+      addGifEventListener(mp4);
     });
   }
 }
 
-function addVideoEventListener (mp4) {
+function addGifEventListener (mp4) {
   setTimeout(() => {
     if (window.localStorage.getItem('global-play') === 'false') {
       mp4.addEventListener('mouseover', () => {
@@ -80,3 +93,5 @@ function displayProgressBar (mp4, hover) {
     }
   }
 }
+
+export {setupControls, getAutoplaySetting, setAutoplaySetting, setAutoplayBtn, setGifState, addGifEventListener, displayProgressBar};

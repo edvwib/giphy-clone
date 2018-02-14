@@ -1,5 +1,7 @@
+import {getAutoplaySetting} from './gifController.js';
+
 let timeOut;
-export default function (query) {
+function search (query) {
   if (query.length > 0) {
     clearTimeout(timeOut);
     timeOut = setTimeout(() => {
@@ -29,8 +31,14 @@ function addGifs (data, gallery) {
     let vidurl = gif['images']['original_mp4']['mp4'];
     let video = document.createElement('video');
     video.src = vidurl;
-    video.autoplay = true;
+    if (getAutoplaySetting()) {
+      video.autoplay = true;
+    } else {
+      video.autoplay = false;
+    }
     video.loop = true;
     gallery.appendChild(video);
   });
 }
+
+export {search, addGifs};

@@ -1,21 +1,14 @@
-import gifController from './gifController.js';
-import searchController from './searchController.js';
+import {setupControls} from './gifController.js';
+import {search} from './searchController.js';
 
 // Controls
-let autoplay = window.localStorage.getItem('autoplay');
-if (autoplay === 'true' || autoplay === null) {
-  window.localStorage.setItem('autoplay', 'true');
-  autoplay = 'true';
-} else {
-  window.localStorage.setItem('autoplay', 'false');
-}
-gifController(autoplay);
+setupControls();
 
 // Search
-const search = document.querySelector('.search-input');
-search.addEventListener('keyup', (e) => searchController(search.value));
+const searchForm = document.querySelector('.search-input');
+searchForm.addEventListener('keyup', (e) => search(searchForm.value));
 let query = window.location.search.split('?search=')[1];
 if (document.URL.indexOf('?search=') >= 0) { // display gifs if url for query is set
   searchController(query);
-  search.value = query;
+  searchForm.value = query;
 }
