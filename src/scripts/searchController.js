@@ -2,6 +2,7 @@ import {getAutoplaySetting} from './gifController.js';
 
 let timeOut;
 function search (query) {
+  window.history.replaceState(null, null, `?search=${query}`); //Add to url
   if (query.length > 0) {
     clearTimeout(timeOut);
     timeOut = setTimeout(() => {
